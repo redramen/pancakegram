@@ -5,7 +5,8 @@ class Post extends Component {
   state = {
     show: false,
     liked: this.props.post.liked,
-    likes: this.props.post.likes
+    likes: this.props.post.likes,
+    lastClicked: undefined
   };
 
   like = () => {
@@ -24,6 +25,21 @@ class Post extends Component {
     }
   };
 
+  isDoubleClick = () => {
+    let currentTime = new Date().getTime();
+
+    if (
+      this.state.lastClicked === undefined ||
+      currentTime - this.state.lastClicked > 500
+    ) {
+      this.setState({
+        lastClicked: currentTime
+      });
+    } else {
+      this.like();
+    }
+  };
+
   hideIcon = () => {
     this.setState({
       show: false
@@ -35,10 +51,12 @@ class Post extends Component {
       <div style={styles.post}>
         <div style={styles.postHeader}>{this.props.post.poster}</div>
         <div style={styles.pictureContainer}>
-          <div style={styles.bigIconContainer} 
-            onDoubleClick={() => {
-              this.like();
-            }}>
+          <div
+            style={styles.bigIconContainer}
+            onClick={() => {
+              this.isDoubleClick();
+            }}
+          >
             <img
               id="liked-icon-big"
               style={this.state.show ? styles.show : styles.noShow}
@@ -70,7 +88,7 @@ const styles = {
     backgroundColor: "white",
     border: "1px solid #dbdbdb",
     width: "600px",
-    maxWidth: "95%",
+    maxWidth: "99%",
     marginTop: "50px"
   },
   postHeader: {
@@ -90,7 +108,7 @@ const styles = {
   },
   picture: {
     width: "100%",
-    cursor: 'pointer'
+    cursor: "pointer"
   },
   bigIconContainer: {
     position: "absolute",

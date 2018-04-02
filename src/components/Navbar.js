@@ -13,8 +13,13 @@ export default Navbar;
 const styles = {
   navBar: {
     width: "100%",
-    height: "80px",
+    height: "60px",
     borderBottom: "1px solid #dbdbdb",
+    position: "fixed",
+    top: 0,
+    left: 0,
+    zIndex: "2",
+    backgroundColor: "white",
     display: "flex",
     justifyContent: "center",
     alignItems: "center"

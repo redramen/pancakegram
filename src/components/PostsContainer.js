@@ -19,6 +19,6 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    paddingBottom: "50px"
+    padding: "50px 0px"
   }
 };
