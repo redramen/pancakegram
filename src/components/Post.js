@@ -35,19 +35,21 @@ class Post extends Component {
       <div style={styles.post}>
         <div style={styles.postHeader}>{this.props.post.poster}</div>
         <div style={styles.pictureContainer}>
-          <img
-            id="liked-icon-big"
-            style={this.state.show ? styles.show : styles.noShow}
-            src={require("../icons/pawprint-no-border.png")}
-            alt="liked icon big"
-          />
+          <div style={styles.bigIconContainer} 
+            onDoubleClick={() => {
+              this.like();
+            }}>
+            <img
+              id="liked-icon-big"
+              style={this.state.show ? styles.show : styles.noShow}
+              src={require("../icons/pawprint-no-border.png")}
+              alt="liked icon big"
+            />
+          </div>
           <img
             style={styles.picture}
             src={require("../pictures/" + this.props.post.picture)}
             alt={this.props.post.caption}
-            onDoubleClick={() => {
-              this.like();
-            }}
           />
         </div>
         <PostFooter
@@ -69,8 +71,7 @@ const styles = {
     border: "1px solid #dbdbdb",
     width: "600px",
     maxWidth: "95%",
-    marginTop: "50px",
-    position: "relative"
+    marginTop: "50px"
   },
   postHeader: {
     width: "100%",
@@ -84,19 +85,28 @@ const styles = {
   },
   pictureContainer: {
     width: "100%",
-    objectFit: "contain"
+    objectFit: "contain",
+    position: "relative"
   },
   picture: {
     width: "100%",
     cursor: 'pointer'
   },
+  bigIconContainer: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    height: "100%",
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  },
   show: {
     height: "30%",
     width: "auto",
     display: "block",
-    position: "absolute",
-    bottom: "50%",
-    left: "20%"
+    userSelect: "none"
   },
   noShow: {
     display: "none"
