@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Navbar = () => {
   return (
@@ -6,21 +6,21 @@ const Navbar = () => {
       <span style={styles.logo}>Pancakegram</span>
     </div>
   );
-}
+};
 
 export default Navbar;
 
 const styles = {
   navBar: {
-    width: '100%',
-    height: '80px',
-    borderBottom: '1px solid #dbdbdb',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
+    width: "100%",
+    height: "80px",
+    borderBottom: "1px solid #dbdbdb",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
   },
   logo: {
-    fontFamily: 'Grand Hotel, cursive',
-    fontSize: '32px',
+    fontFamily: "Grand Hotel, cursive",
+    fontSize: "32px"
   }
-}
+};
